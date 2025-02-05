@@ -57,10 +57,10 @@ class Pet:
         response = requests.get(PET_URL + "/findByStatus?status=sold", timeout=10)
         assert response.status_code == 200, ">>>> Status Code ERROR <<<<"
         response_json = response.json()
-        found = any(pet.get("id") == 1337 for pet in response_json)
+        found = any(pet.get("id") == 1337 for pet in response_json) # Проверяем, что хотя бы один объект в списке имеет id равный 1337
         assert (
             found
-        ), ">>>> Create pet not founded by ID <<<<"  # Проверяем, что хотя бы один объект в списке имеет id равный 1337
+        ), ">>>> Create pet not founded by ID <<<<"  
 
     def put_pet(self):
         response = requests.put(PET_URL, json=test_payloads.pet_put_example, timeout=10)
